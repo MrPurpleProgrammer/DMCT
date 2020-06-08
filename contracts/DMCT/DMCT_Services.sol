@@ -4,10 +4,7 @@ import "./DMCT.sol";
 
 contract DMCT_Services is DMCT {
 
-    function () external payable {
-        
-    }
-
+    function () external payable {}
     function returnAssetIDS() public view returns(uint[] memory assetIDS) {
         assetIDS = AssetIDS;
     }
@@ -57,7 +54,8 @@ contract DMCT_Services is DMCT {
         address creator,
         address owner,
         address[] memory ownershipHistory,
-        bool status) {
+        bool status
+        ) {
 
         index = CIDToCertificate[certificateID].index;
         assetID = CIDToCertificate[certificateID].assetID;

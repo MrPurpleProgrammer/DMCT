@@ -1,7 +1,7 @@
 pragma solidity ^0.5.3;
 
-import "contracts/Models.sol";
-import "contracts/Artisan.sol";
+import "../Models.sol";
+import "../Artisan.sol";
 
 contract DMCT is Models, Artisan {
 
@@ -13,13 +13,9 @@ contract DMCT is Models, Artisan {
     event ReturnTestData(uint Number, string String, address Address);
     event ReturnTestBoolData(bool Boolean);
     event ReturnTestArrayData(uint[] Number);
-    
     uint i = 0; //loop counter
-
     function () external payable {
-        
     }
-
     //Create Functions
     function createLicense(uint certificateID, address licenseOwner) public onlyCertificateOwner(certificateID) returns (uint licenseID) {
         licenseID = generateLicenseID(certificateID, CIDToCertificate[certificateID].certificateOwner, licenseOwner);
@@ -67,7 +63,6 @@ contract DMCT is Models, Artisan {
             Models.burn(msg.sender, tokenID);
             emit ReturnDestroyToken(Models.exists(tokenID));
         }
-
         else {
             uint index = CIDToAIDIndex[tokenID];
             uint CID = AIDToCID[AssetIDS[AssetIDS.length-1]];

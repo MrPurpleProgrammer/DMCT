@@ -1,11 +1,10 @@
 pragma solidity ^0.5.3;
 
-import "node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol";
-import "node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol";
-import "node_modules/openzeppelin-solidity/contracts/token/ERC721/ERC721.sol";
+import "node_modules/@openzeppelin/contracts/ownership/Ownable.sol";
+import "node_modules/@openzeppelin/contracts/math/SafeMath.sol";
+import "node_modules/@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
 contract Models is ERC721, Ownable {
-
     //Events
     event returnAID(uint AssetID);
     event returnCID(uint CertificateID);
@@ -21,14 +20,13 @@ contract Models is ERC721, Ownable {
         string userName;
         uint[] portfolio;
     }
-    
     struct License {
         uint index;
         uint licenseID; 
         address licenseOwner;
         string url;
         bool status;
-    }    
+    }
     struct Certificate {
         uint index;
         uint certificateID; //CID
@@ -117,11 +115,11 @@ contract Models is ERC721, Ownable {
         status = super._isApprovedOrOwner(_owner, _tokenID);
     }
 
-    function balance(address owner) internal view returns (uint _balance){
+    function balance(address owner) internal view returns (uint _balance) {
         _balance = super.balanceOf(owner);
     }
 
-    function exists(uint _tokenID) internal view returns(bool status){
+    function exists(uint _tokenID) internal view returns(bool status) {
         status = super._exists(_tokenID);
     }
 
